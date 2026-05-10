@@ -846,7 +846,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     padding-block: 24px 40px;
     border-bottom: 1px solid var(--light-gray);
     box-shadow: var(--shadow-md);
-    transform: translateY(-110%);
+    transform: translateY(calc(-100% - var(--nav-h)));
     transition: transform 0.4s var(--ease);
     z-index: 999;
     margin-left: 0;
