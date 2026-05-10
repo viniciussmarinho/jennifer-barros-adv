@@ -5,6 +5,8 @@
 
 /* ── Variables ─────────────────────────────────────────── */
 :root {
+  color-scheme: light;
+
   --white:       #FFFFFF;
   --off-white:   #F7F6F3;
   --black:       #0D0D0D;
@@ -32,7 +34,12 @@
 
 /* ── Reset ──────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+  background: var(--white);
+}
 body {
   font-family: var(--font-body);
   color: var(--dark);
@@ -166,11 +173,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   top: 0; left: 0; right: 0;
   z-index: 1000;
   height: var(--nav-h);
-  background: rgba(255,255,255,0.96);
+  background: #ffffff;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid transparent;
   transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 .header.scrolled {
   border-bottom-color: var(--light-gray);
@@ -518,9 +527,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   background: var(--white);
   padding: clamp(28px, 3.5vw, 44px);
   border: 1px solid var(--light-gray);
-  transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease);
+  -webkit-tap-highlight-color: transparent;
 }
-.area-card:hover { background: var(--off-white); border-color: var(--gold); }
 
 /* Centraliza os 2 últimos cards (linha 2 de uma grade 3+2) */
 .area-card:nth-child(4) { grid-column: 2 / span 2; }
@@ -567,9 +575,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   grid-column: span 2;
   background: var(--white);
   border: 1px solid var(--light-gray);
-  transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease);
+  -webkit-tap-highlight-color: transparent;
 }
-.servico-card:hover { background: var(--off-white); border-color: var(--gold); }
 
 /* Layout 4+3: centraliza os 3 últimos cards abaixo dos 4 primeiros */
 .servico-card:nth-child(5) { grid-column: 2 / span 2; }
