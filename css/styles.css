@@ -190,12 +190,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 .nav__logo { flex-shrink: 0; }
-.nav__logo .logo-jb {
-  font-size: 30px;
-  color: var(--dark);
-  transition: color var(--dur);
+.nav__logo-img {
+  display: block;
+  height: 44px;
+  width: auto;
+  filter: invert(1);
+  transition: opacity var(--dur);
 }
-.nav__logo:hover .logo-jb { color: var(--gold); }
+.nav__logo:hover .nav__logo-img { opacity: 0.7; }
 
 .nav__menu {
   display: flex;
@@ -270,23 +272,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   padding-top: var(--nav-h);
 }
 
-/* Ghost watermark */
-.hero__bg-mono {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-display);
-  font-weight: 300;
-  font-size: clamp(220px, 45vw, 560px);
-  color: rgba(255,255,255,0.025);
-  pointer-events: none;
-  user-select: none;
-  letter-spacing: -8px;
-  line-height: 1;
-}
-
 .hero__content {
   position: relative;
   z-index: 2;
@@ -299,43 +284,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   to   { opacity: 1; transform: translateY(0); }
 }
 
-.hero__logo-wrap {
-  margin-bottom: 4px;
-}
-.hero__logo {
-  font-family: var(--font-display);
-  font-weight: 300;
-  font-size: clamp(64px, 13vw, 130px);
-  color: var(--white);
-  letter-spacing: -3px;
-  line-height: 1;
+.hero__logo-img {
   display: block;
-}
-
-.hero__name {
-  font-family: var(--font-script);
-  font-size: clamp(38px, 8vw, 82px);
-  font-weight: 400;
-  color: var(--white);
-  line-height: 1.1;
-  margin-bottom: 6px;
-}
-
-.hero__subtitle {
-  font-family: var(--font-body);
-  font-size: clamp(9px, 1.6vw, 12px);
-  font-weight: 300;
-  color: rgba(255,255,255,0.55);
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  margin-bottom: 28px;
-}
-
-.hero__rule {
-  width: 50px;
-  height: 1px;
-  background: var(--gold);
-  margin: 0 auto 28px;
+  width: clamp(260px, 55vw, 480px);
+  height: auto;
+  margin: 0 auto 40px;
 }
 
 .hero__tagline {
@@ -438,31 +391,12 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 .sobre__image-wrap { position: relative; }
 
-.sobre__image-placeholder {
+.sobre__photo {
+  display: block;
+  width: 100%;
   aspect-ratio: 3/4;
-  background: var(--off-white);
-  border: 1px solid var(--light-gray);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  position: relative;
-  overflow: hidden;
-}
-.sobre__image-placeholder::before {
-  content: '';
-  position: absolute;
-  inset: 12px;
-  border: 1px solid var(--light-gray);
-  pointer-events: none;
-}
-.sobre__img-hint {
-  font-size: 11px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--gray);
-  font-weight: 400;
+  object-fit: cover;
+  object-position: center 10%;
 }
 
 .sobre__divider {
@@ -795,10 +729,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
   .sobre__container {
     grid-template-columns: 1fr;
-    max-width: 640px;
+    max-width: 480px;
     margin-inline: auto;
   }
-  .sobre__image-wrap { display: none; }
+  .sobre__photo {
+    aspect-ratio: 4/5;
+    object-position: center 5%;
+  }
 
   /* Áreas: 2 colunas no tablet, reset dos posicionamentos especiais */
   .areas__grid { grid-template-columns: repeat(2, 1fr); }
@@ -867,8 +804,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .nav__link::after { display: none; }
 
   /* Hero */
-  .hero__logo { font-size: clamp(52px, 18vw, 80px); }
-  .hero__name  { font-size: clamp(34px, 12vw, 60px); }
+  .hero__logo-img { width: clamp(220px, 80vw, 360px); }
+  .nav__logo-img  { height: 38px; }
 
   /* Diferenciais */
   .diferenciais__grid {
