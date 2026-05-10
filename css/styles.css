@@ -174,12 +174,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   z-index: 1000;
   height: var(--nav-h);
   background: #ffffff;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid transparent;
   transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
 }
 .header.scrolled {
   border-bottom-color: var(--light-gray);
@@ -237,23 +233,26 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   flex-direction: column;
   justify-content: center;
   gap: 5px;
-  width: 32px;
-  height: 32px;
-  padding: 4px;
+  width: 40px;
+  height: 40px;
+  padding: 8px;
   margin-left: auto;
+  cursor: pointer;
 }
 .nav__toggle span {
   display: block;
-  height: 1.5px;
+  height: 2px;
+  width: 100%;
   background: var(--dark);
+  border-radius: 2px;
   transition: transform var(--dur) var(--ease), opacity var(--dur) var(--ease), width var(--dur) var(--ease);
   transform-origin: center;
 }
 .nav__toggle span:nth-child(2) { width: 70%; }
 
-.nav__toggle.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav__toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .nav__toggle.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-.nav__toggle.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+.nav__toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 /* ════════════════════════════════════════════════════════
    HERO
