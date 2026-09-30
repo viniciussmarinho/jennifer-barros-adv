@@ -616,20 +616,19 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 ════════════════════════════════════════════════════════ */
 .footer { background: var(--surface); }
 
-.footer__row {
+.footer__simple {
   display: flex;
-  gap: 30px;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
   padding-block: clamp(48px, 7vw, 72px);
 }
 
-.footer__col { width: 33.33%; }
-
-.footer__logo {
-  width: 140px;
-  margin-bottom: 16px;
-}
+.footer__logo { width: 120px; }
 
 .footer__tagline {
+  max-width: 480px;
   font-family: var(--font-body);
   font-size: 14px;
   font-weight: 300;
@@ -637,54 +636,34 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   line-height: 1.7;
 }
 
-.footer__col-title {
-  font-family: var(--font-body);
-  font-size: 1.1em;
-  font-weight: 600;
-  color: var(--white);
-  margin-bottom: 16px;
-}
-
-.footer__list { display: flex; flex-direction: column; gap: 10px; }
-.footer__link {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: rgba(255,255,255,0.69);
-  font-size: 13px;
-  transition: color var(--dur);
-}
-.footer__link svg { width: 14px; height: 14px; color: var(--accent); flex-shrink: 0; }
-.footer__link:hover { color: var(--accent); }
-
 .footer__oab {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: 24px;
+  font-size: 22px;
   color: var(--accent);
-  margin-bottom: 8px;
 }
 
-.footer__legal-bar {
-  background: var(--white);
-  padding-block: 20px;
+.footer__socials {
+  display: flex;
+  gap: 14px;
+  margin-top: 6px;
 }
-.footer__legal {
-  max-width: 720px;
-  margin: 0 auto 10px;
-  font-family: var(--font-body);
-  font-size: 0.9em;
-  font-weight: 300;
-  color: #020202;
-  text-align: center;
-  line-height: 1.6;
+.footer__social-link {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  color: var(--white);
+  transition: background var(--dur), border-color var(--dur);
 }
-.footer__copy {
-  font-family: var(--font-body);
-  font-size: 12px;
-  font-weight: 300;
-  color: rgba(2,2,2,0.6);
-  text-align: center;
+.footer__social-link svg { width: 18px; height: 18px; }
+.footer__social-link:hover {
+  background: var(--accent);
+  border-color: var(--accent);
 }
 
 /* ════════════════════════════════════════════════════════
@@ -759,9 +738,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
   .contato__row { flex-direction: column; }
   .contato__text, .contato__cta-wrap { width: 100%; }
-
-  .footer__row { flex-wrap: wrap; }
-  .footer__col { width: 100%; }
 }
 
 /* ════════════════════════════════════════════════════════
@@ -816,10 +792,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
   .bio__heading { font-size: 2em; line-height: 1em; text-align: center; }
   .bio__stats { justify-content: center; }
-
-  .footer__row { text-align: center; }
-  .footer__logo { margin-inline: auto; }
-  .footer__link { justify-content: center; }
 
   .whatsapp-float { bottom: 18px; right: 18px; width: 52px; height: 52px; }
   .whatsapp-float svg { width: 24px; height: 24px; }
