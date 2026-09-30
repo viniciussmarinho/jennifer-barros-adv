@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════
-   Jennifer Barros — Advocacia e Consultoria Jurídica
+   Jennifer Barros — Advogada Criminalista
    main.js
 ═══════════════════════════════════════════════════════════ */
 
@@ -7,21 +7,8 @@
 const yearEl = document.getElementById('footer-year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-/* ── Header: scroll shadow ───────────────────────────────── */
-const header = document.getElementById('header');
-
-function onScroll() {
-  if (window.scrollY > 20) {
-    header.classList.add('scrolled');
-  } else {
-    header.classList.remove('scrolled');
-  }
-  highlightActiveNav();
-}
-
-window.addEventListener('scroll', onScroll, { passive: true });
-
 /* ── Mobile menu ──────────────────────────────────────────── */
+const siteNav = document.getElementById('site-nav');
 const toggle  = document.getElementById('nav-toggle');
 const menu    = document.getElementById('nav-menu');
 const navLinks = document.querySelectorAll('.nav__link');
@@ -44,7 +31,7 @@ navLinks.forEach(link => {
 
 /* Close menu on outside click */
 document.addEventListener('click', (e) => {
-  if (!header.contains(e.target) && menu.classList.contains('open')) {
+  if (!siteNav.contains(e.target) && menu.classList.contains('open')) {
     menu.classList.remove('open');
     toggle.classList.remove('open');
     toggle.setAttribute('aria-expanded', 'false');
@@ -74,11 +61,13 @@ function highlightActiveNav() {
   });
 }
 
+window.addEventListener('scroll', highlightActiveNav, { passive: true });
+
 /* ── Reveal on scroll (IntersectionObserver) ─────────────── */
 const revealEls = document.querySelectorAll('.reveal');
 
 const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry, i) => {
+  entries.forEach((entry) => {
     if (entry.isIntersecting) {
       /* Staggered delay for sibling elements in a grid */
       const siblings = entry.target.parentElement
@@ -102,18 +91,15 @@ const observer = new IntersectionObserver((entries) => {
 revealEls.forEach(el => observer.observe(el));
 
 /* ── Smooth scroll for anchor links ──────────────────────── */
+/* Uses scrollIntoView (recalculated by the browser at scroll time)
+   instead of a one-shot offsetTop read, which can land short if a
+   webfont swap reflows the page right after the click. */
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', (e) => {
     const target = document.querySelector(anchor.getAttribute('href'));
     if (!target) return;
     e.preventDefault();
 
-    const navH = parseInt(getComputedStyle(document.documentElement)
-      .getPropertyValue('--nav-h')) || 80;
-
-    window.scrollTo({
-      top: target.offsetTop - navH,
-      behavior: 'smooth',
-    });
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 });
